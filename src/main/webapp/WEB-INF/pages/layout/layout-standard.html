@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="utf-8" th:remove>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<meta name="keyword" content="Settour ERP">
+<meta name="theme-color" content="#ffffff">
+<title layout:title-pattern="$CONTENT_TITLE - $LAYOUT_TITLE">東南遊覽車ERP</title>
+<!-- <link href="/css/style.min.css" rel="stylesheet" th:remove> -->
+<link th:href="@{/css/style.min.css}" rel="stylesheet" th:remove>
+<!-- <link href="/vendors/settour/settour-style.css" rel="stylesheet" th:remove> -->
+<link th:href="@{/vendors/settour/settour-style.css}" rel="stylesheet" th:remove>
+<style layout:fragment="style"></style>
+</head>
+<body class="c-app">
+  <!-- 左邊的目錄 -->
+  <div class="c-sidebar c-sidebar-dark c-sidebar-fixed c-sidebar-lg-show" id="sidebar">
+    <!-- 左上的LOGO -->
+    <div class="c-sidebar-brand d-lg-down-none">
+      <img class="c-sidebar-brand d-lg-down-none" alt="東南遊覽車" th:src="@{/images/logo.png}">
+      <img class="c-sidebar-brand-minimized" alt="東南遊覽車" th:src="@{/images/logo.png}">
+    </div>
+    <!-- 左下的目錄選單 -->
+    <ul class="c-sidebar-nav">
+      <li class="c-sidebar-nav-item">
+        <a class="c-sidebar-nav-link" href="/home">
+          <svg class="c-sidebar-nav-icon">
+            <use th:href="@{/vendors/@coreui/icons/svg/free.svg#cil-chart-pie}"></use></svg>
+          A.首頁
+        </a>
+      </li>
+      <li class="c-sidebar-nav-item">
+        <a class="c-sidebar-nav-link" href="/employee/list">
+          <svg class="c-sidebar-nav-icon">
+            <use th:href="@{/vendors/@coreui/icons/svg/free.svg#cil-chart-pie}"></use></svg>
+          B.員工管理
+        </a>
+      </li>
+      <li class="c-sidebar-nav-item">
+        <a class="c-sidebar-nav-link" href="/customer/list">
+          <svg class="c-sidebar-nav-icon">
+            <use th:href="@{/vendors/@coreui/icons/svg/free.svg#cil-chart-pie}"></use></svg>
+          C.客戶管理
+        </a>
+      </li>
+      
+      <li class="c-sidebar-nav-item c-sidebar-nav-dropdown">
+        <a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle" href="#">
+          <svg class="c-sidebar-nav-icon">
+            <use th:href="@{/vendors/@coreui/icons/svg/free.svg#cil-puzzle}"></use></svg>
+          D.車輛管理
+        </a>
+        <ul class="c-sidebar-nav-dropdown-items">
+          <li class="c-sidebar-nav-item">
+            <a class="c-sidebar-nav-link" href="/car/list">
+              <span class="c-sidebar-nav-icon"></span>
+              1.車籍管理
+            </a>
+          </li>
+          <li class="c-sidebar-nav-item">
+            <a class="c-sidebar-nav-link" href="/maintain/list">
+              <span class="c-sidebar-nav-icon"></span>
+              2.保修管理
+            </a>
+          </li>
+          <li class="c-sidebar-nav-item">
+            <a class="c-sidebar-nav-link" href="/component/index">
+              <span class="c-sidebar-nav-icon"></span>
+              3.零件管理
+            </a>
+          </li>
+          <li class="c-sidebar-nav-item">
+            <a class="c-sidebar-nav-link" href="/insurance/list">
+              <span class="c-sidebar-nav-icon"></span>
+              4.保險管理
+            </a>
+          </li>
+          <li class="c-sidebar-nav-item">
+            <a class="c-sidebar-nav-link" href="/firm/list">
+              <span class="c-sidebar-nav-icon"></span>
+              5.廠商管理
+            </a>
+          </li>
+          <li class="c-sidebar-nav-item">
+            <a class="c-sidebar-nav-link" href="/tire/index">
+              <span class="c-sidebar-nav-icon"></span>
+              6.輪胎管理
+            </a>
+          </li>
+          <li class="c-sidebar-nav-item">
+            <a class="c-sidebar-nav-link" href="/oil/list">
+              <span class="c-sidebar-nav-icon"></span>
+              7.油料管理
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="c-sidebar-nav-item c-sidebar-nav-dropdown">
+        <a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle" href="">
+          <svg class="c-sidebar-nav-icon">
+            <use th:href="@{/vendors/@coreui/icons/svg/free.svg#cil-cursor}"></use></svg>
+          E.駕駛管理
+        </a>
+        <ul class="c-sidebar-nav-dropdown-items">
+          <li class="c-sidebar-nav-item">
+            <a class="c-sidebar-nav-link" href="/driver/list">
+              <span class="c-sidebar-nav-icon"></span>
+              1.司機管理
+            </a>
+          </li>
+          <li class="c-sidebar-nav-item">
+            <a class="c-sidebar-nav-link" href="/driverCard/list">
+              <span class="c-sidebar-nav-icon"></span>
+              2.證照管理
+            </a>
+          </li>
+          <li class="c-sidebar-nav-item">
+            <a class="c-sidebar-nav-link" href="/driverAssess/list">
+              <span class="c-sidebar-nav-icon"></span>
+              3.司機考核作業
+            </a>
+          </li>
+           <li class="c-sidebar-nav-item">
+            <a class="c-sidebar-nav-link" href="buttons/button-group.html">
+              <span class="c-sidebar-nav-icon"></span>
+              4.司機休假管理
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="c-sidebar-nav-item">
+        <a class="c-sidebar-nav-link" href="/tourguide/list">
+          <svg class="c-sidebar-nav-icon">
+            <use th:href="@{/vendors/@coreui/icons/svg/free.svg#cil-chart-pie}"></use></svg>
+          F.導遊管理
+        </a>
+      </li>
+      <li class="c-sidebar-nav-dropdown">
+        <a class="c-sidebar-nav-dropdown-toggle" href="#">
+          <svg class="c-sidebar-nav-icon">
+            <use th:href="@{/vendors/@coreui/icons/svg/free.svg#cil-star}"></use></svg>
+          G.派車單管理
+        </a>
+        <ul class="c-sidebar-nav-dropdown-items">
+        <li class="c-sidebar-nav-item">
+            <a class="c-sidebar-nav-link" href="/quota/list">
+              <span class="c-sidebar-nav-icon"></span>
+              估價單管理
+            </a>
+          </li>
+          <li class="c-sidebar-nav-item">
+            <a class="c-sidebar-nav-link" href="/dispatch/index">
+              <span class="c-sidebar-nav-icon"></span>
+              派車單管理
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="c-sidebar-nav-dropdown" sec:authorize="hasAuthority('ROLE_GROUP_ERP_ADMIN') or hasAuthority('GROUP_ERP_HR')">
+        <a class="c-sidebar-nav-dropdown-toggle" href="#">
+          <svg class="c-sidebar-nav-icon">
+            <use th:href="@{/vendors/@coreui/icons/svg/free.svg#cil-star}"></use></svg>
+          H.差勤管理
+        </a>
+        <ul class="c-sidebar-nav-dropdown-items">
+          <li class="c-sidebar-nav-item">
+            <a class="c-sidebar-nav-link" href="/workday/index" sec:authorize="hasAuthority('ROLE_GROUP_ERP_ADMIN') or hasAuthority('GROUP_ERP_HR')">
+              01.工作日維護
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="c-sidebar-nav-dropdown" sec:authorize="hasAuthority('ROLE_GROUP_ERP_ADMIN')">
+        <a class="c-sidebar-nav-dropdown-toggle" href="#">
+          <svg class="c-sidebar-nav-icon">
+            <use th:href="@{/vendors/@coreui/icons/svg/free.svg#cil-star}"></use></svg>
+          Z.系統管理
+        </a>
+        <ul class="c-sidebar-nav-dropdown-items">
+          <li class="c-sidebar-nav-item">
+            <a class="c-sidebar-nav-link" href="/admin/menu/index" sec:authorize="hasAuthority('ROLE_GROUP_ERP_ADMIN')">
+              1.萬用代碼
+            </a>
+          </li>
+          <li class="c-sidebar-nav-item">
+            <a class="c-sidebar-nav-link" href="/admin/user/index" sec:authorize="hasAuthority('ROLE_GROUP_ERP_ADMIN')">
+              2.使用者管理
+            </a>
+          </li>
+          <li class="c-sidebar-nav-item">
+            <a class="c-sidebar-nav-link" href="/admin/notice/index">
+              3.通知訊息
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <button class="c-sidebar-minimizer c-class-toggler" type="button" data-target="_parent"
+      data-class="c-sidebar-minimized"></button>
+  </div>
+
+  <!-- 右邊區塊 -->
+  <div class="c-wrapper c-fixed-components">
+    <!-- 上方 header 內容 -->
+    <header class="c-header c-header-light c-header-fixed c-header-with-subheader">
+      <button class="c-header-toggler c-class-toggler d-lg-none mfe-auto" type="button" data-target="#sidebar"
+        data-class="c-sidebar-show">
+        <svg class="c-icon c-icon-lg">
+          <use th:href="@{/vendors/@coreui/icons/svg/free.svg#cil-menu}"></use></svg>
+      </button>
+      <a class="c-header-brand d-lg-none" href="#">
+        <svg width="118" height="46" alt="CoreUI Logo">
+          <use th:href="@{/assets/brand/coreui.svg#full}"></use></svg>
+      </a>
+      <button class="c-header-toggler c-class-toggler mfs-3 d-md-down-none" type="button" data-target="#sidebar"
+        data-class="c-sidebar-lg-show" responsive="true">
+        <svg class="c-icon c-icon-lg">
+          <use th:href="@{/vendors/@coreui/icons/svg/free.svg#cil-menu}"></use></svg>
+      </button>
+      <ul class="c-header-nav ml-auto mr-4">
+        <li class="c-header-nav-item dropdown">
+          <a class="c-header-nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+            aria-expanded="false">
+            <div class="c-avatar">
+              <svg class="c-icon mr-2">
+                <use th:href="@{/vendors/@coreui/icons/svg/free.svg#cil-applications-settings}"></use></svg>
+            </div>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right pt-0">
+            <div class="dropdown-header bg-light py-2">
+              <strong>網路</strong>
+            </div>
+<!--             <div class="dropdown-item" th:text="${T(com.settour.bus.core.common.utils.HttpReqRespUtils).getClientIpAddressIfServletRequestExist()}">172.18.20.1</div> -->
+            <div class="dropdown-item" th:text="${#httpServletRequest.getServerName()}">AP01</div>
+            <div class="dropdown-header bg-light py-2">
+              <strong>帳號</strong>
+            </div>
+<!--             <div class="dropdown-item" th:text="${#authentication.name}">user name</div> -->
+            <a class="dropdown-item" href="#" onclick="document.getElementById('logout').submit();">
+              <svg class="c-icon mr-2">
+                <use th:href="@{/vendors/@coreui/icons/svg/free.svg#cil-account-logout}"></use></svg>
+              登出
+            </a>
+            <form th:action="@{/logout}" id="logout" method="post">
+            </form>
+          </div>
+        </li>
+      </ul>
+    </header>
+    <div class="c-body">
+      <main class="c-main">
+        <!-- 內文 -->
+        <div class="container-fluid" layout:fragment="content"></div>
+      </main>
+      <footer class="c-footer">
+        <div>
+          <a href="https://www.settour.com.tw">東南旅遊</a>
+          © 2020
+        </div>
+        <div class="ml-auto">
+          Powered by&nbsp;
+          <a href="https://www.settour.com.tw">東南旅遊</a>
+        </div>
+      </footer>
+    </div>
+  </div>
+  <!-- CoreUI and necessary plugins-->
+  <script src="@{/vendors/@coreui/coreui/js/coreui.bundle.min.js}"></script>
+  <!--[if IE]><!-->
+  <script src="@{/vendors/@coreui/icons/js/svgxuse.min.js}"></script>
+  <!--<![endif]-->
+</body>
+</html>
+<script layout:fragment="script"></script>
