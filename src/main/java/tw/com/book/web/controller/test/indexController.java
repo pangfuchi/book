@@ -21,6 +21,11 @@ public class indexController {
 		return"index";
     }
 	
+	@GetMapping(value = "s01")
+    public String s01() {
+		return"s01_CommMenu";
+    }
+	
 	@GetMapping(value = "test")
     public String test() {
 		return"layout/layout-standard";
