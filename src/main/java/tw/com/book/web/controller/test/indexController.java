@@ -23,7 +23,7 @@ public class indexController {
 	
 	@GetMapping(value = "s01")
     public String s01() {
-		return"s01_CommMenu";
+		return"s01";
     }
 	
 	@GetMapping(value = "test")
